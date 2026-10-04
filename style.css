@@ -1,0 +1,323 @@
+/* Global Reset & Styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --gold: #D4A017;
+  --bg-dark: #1A2623;
+  --card-dark: #22312D;
+}
+
+body {
+  background-color: #121917;
+  color: #FFFFFF;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 20px;
+}
+
+/* Page Container (Emulates Printable A4 Landscape Spread) */
+.page {
+  width: 1000px;
+  height: 700px;
+  background-color: var(--bg-dark);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Decorative Diagonal Lines Pattern */
+.lines-pattern {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--gold),
+    var(--gold) 2px,
+    transparent 2px,
+    transparent 10px
+  );
+  opacity: 0.8;
+}
+
+.lines-pattern-white {
+  background: repeating-linear-gradient(
+    45deg,
+    #FFFFFF,
+    #FFFFFF 2px,
+    transparent 2px,
+    transparent 10px
+  );
+  opacity: 0.8;
+}
+
+/* Circle Outline Decorator */
+.circle-accent {
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Image Placeholder with B&W / Grayscale Styling */
+.img-placeholder {
+  background-color: #334440;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) contrast(110%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #88A098;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.img-placeholder span {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* ================= PAGE 1: COVER ================= */
+.page-1-left {
+  width: 45%;
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.page-1-right {
+  width: 55%;
+  height: 100%;
+  position: relative;
+}
+
+.page-1-right .main-img {
+  width: 100%;
+  height: 100%;
+}
+
+.brand-header h2 {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.brand-header p {
+  font-size: 12px;
+  color: #A0B0AB;
+  margin-top: 4px;
+}
+
+.cover-title {
+  font-size: 80px;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -2px;
+  margin-top: 40px;
+}
+
+.p1-lines {
+  width: 120px;
+  height: 120px;
+  margin-top: 30px;
+}
+
+.qr-box {
+  width: 70px;
+  height: 70px;
+  background: #FFFFFF;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-box svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ================= PAGE 2: EXPERIENCE ================= */
+.page-2 {
+  padding: 50px;
+  display: flex;
+  gap: 50px;
+}
+
+.p2-left {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.p2-right {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 30px;
+}
+
+.exp-item {
+  margin-bottom: 24px;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(212, 160, 23, 0.3);
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+.exp-role {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.exp-date {
+  font-size: 13px;
+  color: #A0B0AB;
+}
+
+.exp-desc {
+  font-size: 12px;
+  color: #D0DDD9;
+  line-height: 1.5;
+}
+
+.vertical-title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 32px;
+  font-weight: 800;
+  color: #FFFFFF;
+  position: absolute;
+  left: -40px;
+  bottom: 20px;
+}
+
+/* ================= PAGE 3: WORKS & STACK ================= */
+.page-3 {
+  padding: 50px;
+  display: flex;
+  gap: 40px;
+}
+
+.p3-left {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.p3-right {
+  width: 65%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  position: relative;
+}
+
+.skill-box {
+  background-color: var(--card-dark);
+  padding: 16px;
+  border-left: 3px solid var(--gold);
+}
+
+.skill-box h4 {
+  color: var(--gold);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.skill-box p {
+  font-size: 11px;
+  color: #C2D1CC;
+  line-height: 1.5;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-card .img-placeholder {
+  width: 100%;
+  height: 160px;
+}
+
+.project-card h5 {
+  font-size: 14px;
+  color: var(--gold);
+}
+
+.project-card p {
+  font-size: 11px;
+  color: #A0B0AB;
+  line-height: 1.4;
+}
+
+/* ================= PAGE 4: THANK YOU / CONTACT ================= */
+.page-4 {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.p4-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.p4-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.thank-you-title {
+  font-size: 90px;
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -2px;
+  text-align: right;
+}
+
+.contact-info h3 {
+  color: var(--gold);
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.contact-info p {
+  font-size: 13px;
+  color: #D0DDD9;
+  margin-bottom: 6px;
+}

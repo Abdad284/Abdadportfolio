@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdur-Rahman Akanni Adeoye - Portfolio</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { 
+      --gold: #D4A017; 
+      --bg-dark: #1A2623; 
+      --card-dark: #22312D; 
+      --accent-gray: #A0B0AB;
+    }
+
+    body {
+      background-color: #121917;
+      color: #FFFFFF;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 20px;
+    }
+
+    /* Interactive Navigation Bar */
+    .nav-bar {
+      width: 1000px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card-dark);
+      padding: 14px 28px;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 160, 23, 0.3);
+      position: sticky;
+      top: 20px;
+      z-index: 50;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .nav-links { display: flex; gap: 20px; }
+    .nav-link { color: #FFFFFF; text-decoration: none; font-size: 13px; font-weight: 600; cursor: pointer; transition: color 0.2s; }
+    .nav-link:hover { color: var(--gold); }
+
+    .btn-action {
+      background: var(--gold);
+      color: #121917;
+      border: none;
+      padding: 8px 16px;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .page {
+      width: 1000px;
+      height: 700px;
+      background-color: var(--bg-dark);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .lines-pattern {
+      background: repeating-linear-gradient(45deg, var(--gold), var(--gold) 2px, transparent 2px, transparent 10px);
+      opacity: 0.8;
+    }
+
+    .lines-pattern-white {
+      background: repeating-linear-gradient(45deg, #FFFFFF, #FFFFFF 2px, transparent 2px, transparent 10px);
+      opacity: 0.8;
+    }
+
+    .circle-accent {
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .img-placeholder {
+      background-color: #334440;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(100%) contrast(110%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #88A098;
+      font-size: 14px;
+      font-weight: 600;
+      transition: filter 0.3s ease;
+    }
+
+    .page-1-left { width: 45%; height: 100%; padding: 40px; display: flex; flex-direction: column; justify-content: space-between; position: relative; z-index: 2; }
+    .page-1-right { width: 55%; height: 100%; position: relative; }
+    .page-1-right .main-img { width: 100%; height: 100%; }
+
+    .brand-header h2 { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+    .brand-header p { font-size: 12px; color: #A0B0AB; margin-top: 4px; }
+    .cover-title { font-size: 80px; font-weight: 900; line-height: 0.9; letter-spacing: -2px; margin-top: 40px; }
+    .p1-lines { width: 120px; height: 120px; margin-top: 30px; }
+
+    .qr-box { width: 70px; height: 70px; background: #FFFFFF; padding: 6px; display: flex; align-items: center; justify-content: center; }
+    .qr-box svg { width: 100%; height: 100%; }
+
+    .page-2 { padding: 50px; display: flex; gap: 50px; }
+    .p2-left { width: 55%; display: flex; flex-direction: column; justify-content: space-between; }
+    .p2-right { width: 45%; display: flex; flex-direction: column; gap: 20px; position: relative; }
+    .section-title { font-size: 42px; font-weight: 800; line-height: 1; margin-bottom: 30px; }
+    .exp-item { margin-bottom: 24px; }
+    .exp-header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid rgba(212, 160, 23, 0.3); padding-bottom: 4px; margin-bottom: 8px; }
+    .exp-role { font-size: 16px; font-weight: 700; color: var(--gold); }
+    .exp-date { font-size: 13px; color: #A0B0AB; }
+    .exp-desc { font-size: 12px; color: #D0DDD9; line-height: 1.5; }
+    .vertical-title { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 32px; font-weight: 800; color: #FFFFFF; position: absolute; left: -40px; bottom: 20px; }
+
+    /* Page 3 Grid & Filters */
+    .page-3 { padding: 50px; display: flex; gap: 40px; }
+    .p3-left { width: 35%; display: flex; flex-direction: column; gap: 20px; }
+    .p3-right { width: 65%; display: flex; flex-direction: column; gap: 15px; position: relative; }
+    
+    .filter-bar { display: flex; gap: 8px; margin-bottom: 5px; z-index: 5; }
+    .filter-btn {
+      background: var(--card-dark);
+      color: var(--accent-gray);
+      border: 1px solid rgba(212, 160, 23, 0.3);
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover { background: var(--gold); color: #121917; }
+
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }
+    .skill-box { background-color: var(--card-dark); padding: 16px; border-left: 3px solid var(--gold); }
+    .skill-box h4 { color: var(--gold); font-size: 14px; margin-bottom: 8px; }
+    .skill-box p { font-size: 11px; color: #C2D1CC; line-height: 1.5; }
+    
+    .project-card { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 8px; 
+      cursor: pointer; 
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      background: rgba(34, 49, 45, 0.4);
+      padding: 8px;
+      border-radius: 4px;
+    }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 6px 15px rgba(0,0,0,0.3); }
+    .project-card .img-placeholder { width: 100%; height: 140px; border-radius: 2px; }
+    .project-card h5 { font-size: 14px; color: var(--gold); }
+    .project-card p { font-size: 11px; color: #A0B0AB; line-height: 1.4; }
+
+    .page-4 { padding: 50px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+    .p4-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .p4-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+    .thank-you-title { font-size: 90px; font-weight: 900; line-height: 0.85; letter-spacing: -2px; text-align: right; }
+    .contact-info h3 { color: var(--gold); font-size: 20px; margin-bottom: 12px; }
+    .contact-info p { font-size: 13px; color: #D0DDD9; margin-bottom: 6px; }
+    .contact-info a { color: var(--gold); text-decoration: none; font-weight: 600; }
+    .contact-info a:hover { text-decoration: underline; }
+
+    /* Interactive Modal System */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      backdrop-filter: blur(4px);
+    }
+    .modal-content {
+      background: var(--bg-dark);
+      border: 1px solid var(--gold);
+      width: 520px;
+      padding: 30px;
+      border-radius: 8px;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px; right: 20px;
+      color: var(--gold);
+      font-size: 26px;
+      cursor: pointer;
+    }
+    .modal-tags { display: flex; gap: 8px; margin: 16px 0; flex-wrap: wrap; }
+    .tag { background: var(--card-dark); color: var(--gold); padding: 4px 10px; font-size: 11px; border-radius: 4px; border: 1px solid rgba(212, 160, 23, 0.3); }
+    .modal-links { margin-top: 20px; display: flex; gap: 12px; }
+    .btn-modal { background: var(--gold); color: #121917; padding: 10px 18px; text-decoration: none; font-size: 12px; font-weight: 700; border-radius: 4px; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVIGATION BAR -->
+  <div class="nav-bar">
+    <span style="font-size: 13px; font-weight: 700; color: var(--gold);">ABDUR-RAHMAN ADEOYE</span>
+    <div class="nav-links">
+      <a class="nav-link" onclick="scrollToPage('page-1')">Home</a>
+      <a class="nav-link" onclick="scrollToPage('page-2')">Experience</a>
+      <a class="nav-link" onclick="scrollToPage('page-3')">Projects</a>
+      <a class="nav-link" onclick="scrollToPage('page-4')">Contact</a>
+    </div>
+    <button class="btn-action" onclick="openContactModal()">Get In Touch</button>
+  </div>
+
+  <!-- PAGE 1: COVER -->
+  <div class="page" id="page-1">
+    <div class="page-1-left">
+      <div class="brand-header">
+        <h2>Abdur-Rahman Adeoye</h2>
+        <p>Full-Stack Developer & Cloud Specialist</p>
+      </div>
+
+      <div>
+        <div class="cover-title">PORT<br>FOLIO.</div>
+        <div class="lines-pattern p1-lines"></div>
+      </div>
+
+      <div class="qr-box">
+        <svg viewBox="0 0 24 24" fill="black">
+          <path d="M3 3h8v8H3zm2 2v4h4V5zm8-2h8v8h-8zm2 2v4h4V5zM3 13h8v8H3zm2 2v4h4v-4zm13-2h3v2h-3zm-3 2h2v3h-2zm3 3h3v3h-3zm-3 1h2v2h-2zm1-3h3v1h-3z"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="page-1-right">
+      <div class="img-placeholder main-img" style="background-image: url('images/profile.png');"></div>
+    </div>
+
+    <div class="circle-accent" style="width: 180px; height: 180px; top: -40px; right: 200px;"></div>
+  </div>
+
+  <!-- PAGE 2: EXPERIENCE -->
+  <div class="page page-2" id="page-2">
+    <div class="p2-left">
+      <h1 class="section-title">Working<br>Experiences</h1>
+
+      <div>
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Lead Backend Architecture — Nexora</span>
+            <span class="exp-date">2026</span>
+          </div>
+          <p class="exp-desc">Engineered RESTful API pipelines for the Wema Hackaholics 7.0 project using Node.js and Express. Deployed live services on Render with modular cloud integration.</p>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Cloud & Full-Stack Engineer — Tech Titans</span>
+            <span class="exp-date">2025</span>
+          </div>
+          <p class="exp-desc">Designed a hybrid serverless inventory forecasting platform using Vercel, AWS Lambda, API Gateway, DynamoDB, and Amazon Q Business.</p>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Systems & Data Structures Specialist</span>
+            <span class="exp-date">2025</span>
+          </div>
+          <p class="exp-desc">Implemented low-level memory analysis in C (multi-dimensional array pointers) and automated Python analytics workflows using Matplotlib and Seaborn.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="p2-right">
+      <div class="img-placeholder" style="width: 100%; height: 300px; background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600');"></div>
+      <div class="img-placeholder" style="width: 60%; height: 200px; align-self: flex-end; background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600');"></div>
+
+      <div class="vertical-title">My Latest Works</div>
+      <div class="lines-pattern" style="width: 100px; height: 80px; position: absolute; top: 0; right: 0;"></div>
+      <div class="circle-accent" style="width: 140px; height: 140px; bottom: 80px; right: -40px;"></div>
+    </div>
+  </div>
+
+  <!-- PAGE 3: TECHNICAL STACK & PROJECTS -->
+  <div class="page page-3" id="page-3">
+    <div class="p3-left">
+      <div>
+        <h2 style="font-size: 28px; color: var(--gold); margin-bottom: 8px;">Core Stack</h2>
+        <p style="font-size: 13px; color: #A0B0AB;">Key technical proficiencies across cloud, backend, and machine learning systems.</p>
+      </div>
+
+      <div class="skill-box">
+        <h4>Full-Stack Engineering</h4>
+        <p>JavaScript (ES6+), Node.js, Express.js, Python, C, HTML5, CSS3, REST APIs</p>
+      </div>
+
+      <div class="skill-box">
+        <h4>Cloud & DevOps</h4>
+        <p>AWS Lambda, API Gateway, DynamoDB, Amazon Q, Supabase, Vercel, Render, Git, PowerShell</p>
+      </div>
+
+      <div class="lines-pattern" style="width: 100px; height: 100px; margin-top: auto;"></div>
+    </div>
+
+    <div class="p3-right">
+      <!-- Added Category Filter Bar -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterProjects('all', this)">All Works</button>
+        <button class="filter-btn" onclick="filterProjects('backend', this)">Backend & Cloud</button>
+        <button class="filter-btn" onclick="filterProjects('systems', this)">Systems & ML</button>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card" data-category="backend" onclick="openProjectModal('Nexora Backend API', 'Production REST API for Hackaholics 7.0 application built with Express and Node.js. Deployed on Render with automated build triggers.', ['Node.js', 'Express', 'Render', 'Git'], 'https://github.com/Abdad284')">
+          <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600');"></div>
+          <h5>01. Nexora Backend</h5>
+          <p>Production API for Hackaholics 7.0 hackathon application.</p>
+        </div>
+
+        <div class="project-card" data-category="backend" onclick="openProjectModal('Inventory Assistant', 'Multi-cloud forecasting tool leveraging serverless AWS architecture, Vercel endpoints, and Amazon Q Business intelligence.', ['AWS Lambda', 'DynamoDB', 'Vercel', 'Node.js'], 'https://github.com/Abdad284')">
+          <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=600');"></div>
+          <h5>02. Inventory Assistant</h5>
+          <p>Multi-cloud forecasting tool powered by AWS Lambda & DynamoDB.</p>
+        </div>
+
+        <div class="project-card" data-category="systems" onclick="openProjectModal('Array Memory ADT', 'Deep dive investigation into multi-dimensional array pointer arithmetic, stack allocation, and heap layout in C.', ['C Language', 'Data Structures', 'Memory Optimization'], 'https://github.com/Abdad284')">
+          <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600');"></div>
+          <h5>03. Array Memory ADT</h5>
+          <p>Low-level analysis of multi-dimensional arrays in C.</p>
+        </div>
+
+        <div class="project-card" data-category="systems" onclick="openProjectModal('Data Analysis Pipelines', 'Modular Python analytics workflows inspecting dynamic dataset trends with automated visualization rendering.', ['Python', 'Seaborn', 'Matplotlib', 'Pandas'], 'https://github.com/Abdad284')">
+          <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600');"></div>
+          <h5>04. Data Pipelines</h5>
+          <p>Exploratory analytics and modeling in Python with Seaborn.</p>
+        </div>
+      </div>
+
+      <div class="circle-accent" style="width: 160px; height: 160px; top: 80px; left: 140px;"></div>
+    </div>
+  </div>
+
+  <!-- PAGE 4: THANK YOU / CONTACT -->
+  <div class="page page-4" id="page-4">
+    <div class="p4-top">
+      <div class="img-placeholder" style="width: 320px; height: 260px; background-image: url('images/profile.png');"></div>
+      <div class="thank-you-title">
+        Thank<br>You
+      </div>
+    </div>
+
+    <div class="circle-accent" style="width: 220px; height: 220px; top: -60px; left: -60px;"></div>
+
+    <div class="p4-bottom">
+      <div style="position: relative;">
+        <div class="img-placeholder" style="width: 320px; height: 260px; background-image: url('images/profile: .png');"></div>
+        <div class="lines-pattern-white" style="width: 140px; height: 140px; position: absolute; bottom: 30px; right: -30px;"></div>
+      </div>
+
+      <div class="contact-info" style="margin-bottom: 20px;">
+        <h3>Let's Build Together</h3>
+        <p><strong>Name:</strong> Abdur-Rahman Akanni Adeoye</p>
+        <p><strong>Location:</strong> Lagos, Nigeria</p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/Abdad284" target="_blank">github.com/Abdad284</a></p>
+        <p><strong>Email:</strong> <a href="mailto:adeoyeabdurrahman8@gmail.com">adeoyeabdurrahman8@gmail.com</a></p>
+        <p><strong>Specialty:</strong> Cloud Architecture & Full-Stack APIs</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DYNAMIC PROJECT MODAL -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('projectModal')">&times;</span>
+      <h3 id="modalTitle" style="color: var(--gold); font-size: 20px; margin-bottom: 10px;">Project Details</h3>
+      <p id="modalDesc" style="font-size: 13px; color: #D0DDD9; line-height: 1.6;"></p>
+      <div class="modal-tags" id="modalTags"></div>
+      <div class="modal-links">
+        <a id="modalGithub" href="#" target="_blank" class="btn-modal">View GitHub Repository</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT MODAL -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
+      <h3 style="color: var(--gold); font-size: 20px; margin-bottom: 12px;">Contact Abdur-Rahman</h3>
+      <p style="font-size: 13px; color: #D0DDD9; margin-bottom: 16px;">Send a message directly to <strong>adeoyeabdurrahman8@gmail.com</strong>:</p>
+      
+      <form onsubmit="handleFormSubmit(event)" style="display: flex; flex-direction: column; gap: 12px;">
+        <input type="text" placeholder="Your Name" required style="padding: 10px; background: var(--card-dark); border: 1px solid rgba(212,160,23,0.3); color: #fff; border-radius: 4px;">
+        <input type="email" placeholder="Your Email" required style="padding: 10px; background: var(--card-dark); border: 1px solid rgba(212,160,23,0.3); color: #fff; border-radius: 4px;">
+        <textarea rows="4" placeholder="Your Message" required style="padding: 10px; background: var(--card-dark); border: 1px solid rgba(212,160,23,0.3); color: #fff; border-radius: 4px; resize: none;"></textarea>
+        <button type="submit" class="btn-modal" style="margin-top: 6px;">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT FEATURES -->
+  <script>
+    // Smooth navigation scrolling
+    function scrollToPage(pageId) {
+      const page = document.getElementById(pageId);
+      if (page) {
+        page.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Filter projects grid
+    function filterProjects(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Dynamic project modal popups
+    function openProjectModal(title, desc, tags, githubUrl) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('modalGithub').href = githubUrl;
+
+      const tagsBox = document.getElementById('modalTags');
+      tagsBox.innerHTML = '';
+      tags.forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'tag';
+        span.innerText = tag;
+        tagsBox.appendChild(span);
+      });
+
+      document.getElementById('projectModal').style.display = 'flex';
+    }
+
+    function openContactModal() {
+      document.getElementById('contactModal').style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      alert('Thank you for reaching out! Your message has been prepared for sending.');
+      closeModal('contactModal');
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal-overlay')) {
+        event.target.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
