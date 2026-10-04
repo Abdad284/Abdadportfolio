@@ -21,17 +21,18 @@
       flex-direction: column;
       align-items: center;
       gap: 40px;
-      padding: 40px 20px;
+      padding: 20px;
     }
 
     /* Interactive Navigation Bar */
     .nav-bar {
-      width: 1000px;
+      width: 100%;
+      max-width: 1000px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: var(--card-dark);
-      padding: 14px 28px;
+      padding: 14px 24px;
       border-radius: 8px;
       border: 1px solid rgba(212, 160, 23, 0.3);
       position: sticky;
@@ -58,8 +59,9 @@
     .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
 
     .page {
-      width: 1000px;
-      height: 700px;
+      width: 100%;
+      max-width: 1000px;
+      min-height: 700px;
       background-color: var(--bg-dark);
       position: relative;
       overflow: hidden;
@@ -98,9 +100,10 @@
       transition: filter 0.3s ease;
     }
 
-    .page-1-left { width: 45%; height: 100%; padding: 40px; display: flex; flex-direction: column; justify-content: space-between; position: relative; z-index: 2; }
-    .page-1-right { width: 55%; height: 100%; position: relative; }
-    .page-1-right .main-img { width: 100%; height: 100%; }
+    /* Page 1 Structure */
+    .page-1-left { width: 45%; padding: 40px; display: flex; flex-direction: column; justify-content: space-between; position: relative; z-index: 2; }
+    .page-1-right { width: 55%; position: relative; }
+    .page-1-right .main-img { width: 100%; height: 100%; min-height: 350px; }
 
     .brand-header h2 { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
     .brand-header p { font-size: 12px; color: #A0B0AB; margin-top: 4px; }
@@ -110,6 +113,7 @@
     .qr-box { width: 70px; height: 70px; background: #FFFFFF; padding: 6px; display: flex; align-items: center; justify-content: center; }
     .qr-box svg { width: 100%; height: 100%; }
 
+    /* Page 2 Structure */
     .page-2 { padding: 50px; display: flex; gap: 50px; }
     .p2-left { width: 55%; display: flex; flex-direction: column; justify-content: space-between; }
     .p2-right { width: 45%; display: flex; flex-direction: column; gap: 20px; position: relative; }
@@ -121,12 +125,12 @@
     .exp-desc { font-size: 12px; color: #D0DDD9; line-height: 1.5; }
     .vertical-title { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 32px; font-weight: 800; color: #FFFFFF; position: absolute; left: -40px; bottom: 20px; }
 
-    /* Page 3 Grid & Filters */
+    /* Page 3 Structure */
     .page-3 { padding: 50px; display: flex; gap: 40px; }
     .p3-left { width: 35%; display: flex; flex-direction: column; gap: 20px; }
     .p3-right { width: 65%; display: flex; flex-direction: column; gap: 15px; position: relative; }
     
-    .filter-bar { display: flex; gap: 8px; margin-bottom: 5px; z-index: 5; }
+    .filter-bar { display: flex; gap: 8px; margin-bottom: 5px; z-index: 5; flex-wrap: wrap; }
     .filter-btn {
       background: var(--card-dark);
       color: var(--accent-gray);
@@ -160,6 +164,7 @@
     .project-card h5 { font-size: 14px; color: var(--gold); }
     .project-card p { font-size: 11px; color: #A0B0AB; line-height: 1.4; }
 
+    /* Page 4 Structure */
     .page-4 { padding: 50px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
     .p4-top { display: flex; justify-content: space-between; align-items: flex-start; }
     .p4-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
@@ -169,7 +174,7 @@
     .contact-info a { color: var(--gold); text-decoration: none; font-weight: 600; }
     .contact-info a:hover { text-decoration: underline; }
 
-    /* Interactive Modal System */
+    /* Modal Styling */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -179,11 +184,13 @@
       align-items: center;
       z-index: 100;
       backdrop-filter: blur(4px);
+      padding: 20px;
     }
     .modal-content {
       background: var(--bg-dark);
       border: 1px solid var(--gold);
-      width: 520px;
+      width: 100%;
+      max-width: 520px;
       padding: 30px;
       border-radius: 8px;
       position: relative;
@@ -200,6 +207,47 @@
     .tag { background: var(--card-dark); color: var(--gold); padding: 4px 10px; font-size: 11px; border-radius: 4px; border: 1px solid rgba(212, 160, 23, 0.3); }
     .modal-links { margin-top: 20px; display: flex; gap: 12px; }
     .btn-modal { background: var(--gold); color: #121917; padding: 10px 18px; text-decoration: none; font-size: 12px; font-weight: 700; border-radius: 4px; border: none; cursor: pointer; }
+
+    /* MOBILE RESPONSIVE MEDIA QUERIES */
+    @media screen and (max-width: 768px) {
+      body { padding: 12px; gap: 24px; }
+      
+      .nav-bar { flex-direction: column; gap: 12px; text-align: center; padding: 12px 16px; }
+      .nav-links { gap: 14px; }
+
+      .page {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+        padding: 28px 20px !important;
+      }
+
+      /* Page 1 Mobile */
+      .page-1-left { width: 100%; padding: 0; margin-bottom: 24px; }
+      .page-1-right { width: 100%; }
+      .cover-title { font-size: 54px; margin-top: 20px; }
+
+      /* Page 2 Mobile */
+      .page-2 { flex-direction: column; gap: 30px; }
+      .p2-left { width: 100%; }
+      .p2-right { width: 100%; }
+      .vertical-title { display: none; }
+
+      /* Page 3 Mobile */
+      .page-3 { flex-direction: column; gap: 30px; }
+      .p3-left { width: 100%; }
+      .p3-right { width: 100%; }
+      .projects-grid { grid-template-columns: 1fr; }
+
+      /* Page 4 Mobile */
+      .page-4 { gap: 30px; }
+      .p4-top { flex-direction: column-reverse; gap: 20px; }
+      .p4-bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
+      .thank-you-title { font-size: 58px; text-align: left; }
+      .p4-top .img-placeholder, .p4-bottom .img-placeholder { width: 100% !important; height: 200px !important; }
+
+      .circle-accent { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -229,7 +277,7 @@
         <div class="lines-pattern p1-lines"></div>
       </div>
 
-      <div class="qr-box">
+      <div class="qr-box" style="margin-top: 20px;">
         <svg viewBox="0 0 24 24" fill="black">
           <path d="M3 3h8v8H3zm2 2v4h4V5zm8-2h8v8h-8zm2 2v4h4V5zM3 13h8v8H3zm2 2v4h4v-4zm13-2h3v2h-3zm-3 2h2v3h-2zm3 3h3v3h-3zm-3 1h2v2h-2zm1-3h3v1h-3z"/>
         </svg>
@@ -276,8 +324,8 @@
     </div>
 
     <div class="p2-right">
-      <div class="img-placeholder" style="width: 100%; height: 300px; background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600');"></div>
-      <div class="img-placeholder" style="width: 60%; height: 200px; align-self: flex-end; background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600');"></div>
+      <div class="img-placeholder" style="width: 100%; height: 260px; background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600');"></div>
+      <div class="img-placeholder" style="width: 100%; height: 180px; background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600');"></div>
 
       <div class="vertical-title">My Latest Works</div>
       <div class="lines-pattern" style="width: 100px; height: 80px; position: absolute; top: 0; right: 0;"></div>
@@ -307,7 +355,6 @@
     </div>
 
     <div class="p3-right">
-      <!-- Added Category Filter Bar -->
       <div class="filter-bar">
         <button class="filter-btn active" onclick="filterProjects('all', this)">All Works</button>
         <button class="filter-btn" onclick="filterProjects('backend', this)">Backend & Cloud</button>
@@ -347,7 +394,7 @@
   <!-- PAGE 4: THANK YOU / CONTACT -->
   <div class="page page-4" id="page-4">
     <div class="p4-top">
-      <div class="img-placeholder" style="width: 320px; height: 260px; background-image: url('images/profile.png');"></div>
+      <div class="img-placeholder" style="width: 320px; height: 240px; background-image: url('images/profile.png');"></div>
       <div class="thank-you-title">
         Thank<br>You
       </div>
@@ -356,9 +403,9 @@
     <div class="circle-accent" style="width: 220px; height: 220px; top: -60px; left: -60px;"></div>
 
     <div class="p4-bottom">
-      <div style="position: relative;">
-        <div class="img-placeholder" style="width: 320px; height: 260px; background-image: url('images/profile: .png');"></div>
-        <div class="lines-pattern-white" style="width: 140px; height: 140px; position: absolute; bottom: 30px; right: -30px;"></div>
+      <div style="position: relative; width: 100%; max-width: 320px;">
+        <div class="img-placeholder" style="width: 100%; height: 240px; background-image: url('images/profile.png');"></div>
+        <div class="lines-pattern-white" style="width: 100px; height: 100px; position: absolute; bottom: -10px; right: -10px;"></div>
       </div>
 
       <div class="contact-info" style="margin-bottom: 20px;">
@@ -403,7 +450,6 @@
 
   <!-- JAVASCRIPT FEATURES -->
   <script>
-    // Smooth navigation scrolling
     function scrollToPage(pageId) {
       const page = document.getElementById(pageId);
       if (page) {
@@ -411,7 +457,6 @@
       }
     }
 
-    // Filter projects grid
     function filterProjects(category, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -426,7 +471,6 @@
       });
     }
 
-    // Dynamic project modal popups
     function openProjectModal(title, desc, tags, githubUrl) {
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalDesc').innerText = desc;
@@ -458,7 +502,6 @@
       closeModal('contactModal');
     }
 
-    // Close modal when clicking outside
     window.onclick = function(event) {
       if (event.target.classList.contains('modal-overlay')) {
         event.target.style.display = 'none';
