@@ -49,13 +49,14 @@
     }
 
     .brand {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      background: var(--accent-glow);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: var(--accent-glow);
+  -webkit-background-clip: text;
+  background-clip: text; /* <-- ADD THIS LINE */
+  -webkit-text-fill-color: transparent;
+}
 
     .nav-links { display: flex; gap: 24px; }
     .nav-link { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; cursor: pointer; transition: 0.2s; }
@@ -164,11 +165,11 @@
     }
 
     .rainbow-text {
-      background: var(--accent-glow);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
+  background: var(--accent-glow);
+  -webkit-background-clip: text;
+  background-clip: text; /* <-- ADD THIS LINE */
+  -webkit-text-fill-color: transparent;
+}
     .hero-desc { color: var(--text-muted); font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
 
     /* DASHBOARD WIDGET & METRICS */
